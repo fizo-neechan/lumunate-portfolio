@@ -1,5 +1,6 @@
 // ContactForm.tsx
 import ContactFormClient from './Contact-Client';
+import Image from 'next/image';
 
 export default function ContactForm() {
     return (
@@ -11,15 +12,15 @@ export default function ContactForm() {
                 </h2>
                 <div className="flex flex-col mt-4 content-center">
                     <div className="flex items-center">
-                        <img src="/images/icons/mail-outline.svg" alt="Email" className="mr-4 w-4 h-4" />
+                        <Image src="/images/icons/mail-outline.svg" alt="Email" className="mr-4" width={16} height={16} />
                         <span>marketing@luminate.com</span>
                     </div>
                     <div className="flex items-center">
-                        <img src="/images/icons/phone-flip.svg" alt="Phone" className="mr-4 w-4 h-4" />
+                        <Image src="/images/icons/phone-flip.svg" alt="Phone" className="mr-4" width={16} height={16} />
                         <span>+92 3361000001</span>
                     </div>
                     <div className="flex items-center">
-                        <img src="/images/icons/location-pin.svg" alt="Location" className="mr-4 w-4 h-4" />
+                        <Image src="/images/icons/location-pin.svg" alt="Location" className="mr-4" width={16} height={16} />
                         <span>Islamabad, Pakistan</span>
                     </div>
                 </div>
