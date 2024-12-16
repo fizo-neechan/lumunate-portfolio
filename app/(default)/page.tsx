@@ -24,7 +24,7 @@ import Features from "@/components/features";
 import Testimonials from "@/components/testimonials";
 import Cta from "@/components/cta";
 import WhyChooseUs from "@/components/why-choose-us";
-import ContactForm from "@/components/contact-us-form";
+import ContactForm from "@/components/contact-us";
 
 export default function Home() {
   return (
