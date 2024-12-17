@@ -13,7 +13,7 @@ import {
 import * as React from "react";
 import { container, footer, h1, hr, main, section, textContent, textLabel } from "./contact-email.styles";
 
-interface AdminEmailProps {
+export interface AdminEmailProps {
   name: string;
   email: string;
   message: string;

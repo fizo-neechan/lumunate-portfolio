@@ -2,7 +2,7 @@ import { Body, Container, Head, Heading, Hr, Html, Preview, Section, Text } from
 import * as React from "react";
 import { container, footer, h1, hr, main, section, text } from "./contact-email.styles";
 
-interface UserEmailProps {
+export interface UserEmailProps {
   name: string;
 }
 
