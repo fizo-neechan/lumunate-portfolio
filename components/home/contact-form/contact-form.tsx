@@ -51,17 +51,16 @@ export default function ContactFormClient() {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
             {submitStatus.message && (
-                <div 
-                    className={`p-4 rounded-md ${
-                        submitStatus.type === 'success' 
-                            ? 'bg-green-50 text-green-800' 
+                <div
+                    className={`p-4 rounded-md ${submitStatus.type === 'success'
+                            ? 'bg-green-50 text-green-800'
                             : 'bg-red-50 text-red-800'
-                    }`}
+                        }`}
                 >
                     {submitStatus.message}
                 </div>
             )}
-            
+
             <div className="mb-4">
                 <label className="text-white mb-2">Name</label>
                 <input

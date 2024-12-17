@@ -17,14 +17,14 @@ export const metadata = {
   charset: "UTF-8",
 };
 
-import PageIllustration from "@/components/page-illustration";
-import Hero from "@/components/hero-home";
-import Workflows from "@/components/workflows";
-import Features from "@/components/features";
-import Testimonials from "@/components/testimonials";
-import Cta from "@/components/cta";
-import WhyChooseUs from "@/components/why-choose-us";
-import ContactForm from "@/components/contact-us";
+import PageIllustration from "@/components/home/page-illustration";
+import Hero from "@/components/home/hero-home";
+import Workflows from "@/components/home/workflows";
+import Features from "@/components/home/features";
+import Testimonials from "@/components/home/testimonials";
+import Cta from "@/components/home/cta";
+import WhyChooseUs from "@/components/home/why-choose-us";
+import ContactForm from "@/components/home/contact-us";
 
 export default function Home() {
   return (
