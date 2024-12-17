@@ -3,40 +3,65 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactFormInputs, contactSchema } from "@/types/contact-us";
+import { useState } from "react";
+import { submitContactForm } from "./contact-form.action";
 
 export default function ContactFormClient() {
+    const [submitStatus, setSubmitStatus] = useState<{
+        message: string;
+        type: 'success' | 'error' | null;
+    }>({
+        message: '',
+        type: null
+    });
+
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm<ContactFormInputs>({
         resolver: zodResolver(contactSchema),
     });
 
     const onSubmit = async (data: ContactFormInputs) => {
-        console.log(data)
-        // try {
-        //     await resend.sendEmail({
-        //         to: "saad@luminate.com",
-        //         subject: "New Contact Form Submission",
-        //         html: (
-        //             <Email>
-        //                 <h1>Contact Form Submission</h1>
-        //                 <p><strong>Name:</strong> {data.name}</p>
-        //                 <p><strong>Email:</strong> {data.email}</p>
-        //                 <p><strong>Message:</strong> {data.message}</p>
-        //             </Email>
-        //         ),
-        //     });
-        //     alert("Message sent successfully!");
-        // } catch (error) {
-        //     console.error("Error sending email:", error);
-        //     alert("Failed to send message. Please try again later.");
-        // }
+        try {
+            const result = await submitContactForm(data);
+
+            if (result.success) {
+                setSubmitStatus({
+                    message: result.message,
+                    type: 'success'
+                });
+                reset();
+            } else {
+                setSubmitStatus({
+                    message: result.message,
+                    type: 'error'
+                });
+            }
+        } catch {
+            setSubmitStatus({
+                message: 'An unexpected error occurred. Please try again.',
+                type: 'error'
+            });
+        }
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+            {submitStatus.message && (
+                <div 
+                    className={`p-4 rounded-md ${
+                        submitStatus.type === 'success' 
+                            ? 'bg-green-50 text-green-800' 
+                            : 'bg-red-50 text-red-800'
+                    }`}
+                >
+                    {submitStatus.message}
+                </div>
+            )}
+            
             <div className="mb-4">
                 <label className="text-white mb-2">Name</label>
                 <input
