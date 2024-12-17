@@ -1,5 +1,5 @@
-import ContactFormClient from './contact-form';
 import Image from 'next/image';
+import ContactFormClient from './contact-form';
 
 export default function ContactForm() {
     return (

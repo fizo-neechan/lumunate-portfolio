@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Spotlight from "@/components/spotlight";
+import Spotlight from "@/components/animations/spotlight";
 
 export default function Workflows() {
   return (
