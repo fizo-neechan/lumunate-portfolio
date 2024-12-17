@@ -1,18 +1,8 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-//import { resend } from "resend"; // Ensure you have this package installed
-//import { Email } from "react-email"; // Ensure you have this package installed
-
-const contactSchema = z.object({
-    name: z.string().min(1, "Name is required"),
-    email: z.string().email("Invalid email address"),
-    message: z.string().min(1, "Message is required"),
-});
-
-type ContactFormInputs = z.infer<typeof contactSchema>;
+import { ContactFormInputs, contactSchema } from "@/types/contact-us";
 
 export default function ContactFormClient() {
     const {
