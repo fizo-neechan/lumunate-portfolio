@@ -18,7 +18,7 @@ export default function ContactFormClient() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: {errors},
         reset,
     } = useForm<ContactFormInputs>({
         resolver: zodResolver(contactSchema),
@@ -49,26 +49,32 @@ export default function ContactFormClient() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col mb-10 inline-block p-4 w-full max-w-[700px]">
             {submitStatus.message && (
-                <div 
+                <div
                     className={`p-4 rounded-md ${
-                        submitStatus.type === 'success' 
-                            ? 'bg-green-50 text-green-800' 
+                        submitStatus.type === 'success'
+                            ? 'bg-green-50 text-green-800'
                             : 'bg-red-50 text-red-800'
                     }`}
                 >
                     {submitStatus.message}
                 </div>
             )}
-            
+
             <div className="mb-4">
                 <label className="text-white mb-2">Name</label>
                 <input
                     type="text"
                     placeholder="Name"
                     {...register("name")}
-                    className="w-full p-2 bg-transparent text-white border-none rounded-md shadow-[0_-3px_5px_rgba(0,162,112,0.5),0_3px_5px_rgba(0,162,112,0.5)]"
+                    style={{
+                        borderTopWidth: '2px',
+                        borderBottomWidth: '2px',
+                        borderImageSource: 'linear-gradient(95.8deg, rgba(0,28,19,0.5) 0%, #00A270 50%, rgba(0,28,19,0.3) 99.5%)',
+                        borderImageSlice: 1
+                    }}
+                    className="w-full p-3 bg-transparent text-white border-x-0 rounded-md"
                 />
                 {errors.name && <p className="text-red-500">{errors.name.message}</p>}
             </div>
@@ -79,7 +85,13 @@ export default function ContactFormClient() {
                     type="email"
                     placeholder="Email"
                     {...register("email")}
-                    className="w-full p-2 bg-transparent text-white border-none rounded-md shadow-[0_-3px_5px_rgba(0,162,112,0.5),0_3px_5px_rgba(0,162,112,0.5)]"
+                    style={{
+                        borderTopWidth: '2px',
+                        borderBottomWidth: '2px',
+                        borderImageSource: 'linear-gradient(95.8deg, rgba(0,28,19,0.5) 0%, #00A270 50%, rgba(0,28,19,0.3) 99.5%)',
+                        borderImageSlice: 1
+                    }}
+                    className="w-full p-3 bg-transparent text-white border-x-0 rounded-md"
                 />
                 {errors.email && <p className="text-red-500">{errors.email.message}</p>}
             </div>
@@ -89,17 +101,23 @@ export default function ContactFormClient() {
                 <textarea
                     placeholder="Message"
                     {...register("message")}
-                    className="w-full p-2 bg-transparent text-white border-none rounded-md shadow-[0_-3px_5px_rgba(0,162,112,0.5),0_3px_5px_rgba(0,162,112,0.5)]"
+                    style={{
+                        borderTopWidth: '2px',
+                        borderBottomWidth: '2px',
+                        borderImageSource: 'linear-gradient(95.8deg, rgba(0,28,19,0.5) 0%, #00A270 50%, rgba(0,28,19,0.3) 99.5%)',
+                        borderImageSlice: 1
+                    }}
+                    className="w-full p-3 bg-transparent text-white border-x-0 rounded-md min-h-[200px]"
                 />
                 {errors.message && <p className="text-red-500">{errors.message.message}</p>}
             </div>
 
-            <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center font-raleway mt-8">
-                <button type="submit" className="btn group mb-4 w-auto bg-gradient-to-t from-forest-600 to-forest-500 text-white rounded-full px-16">
-                    <span className="relative inline-flex items-center">
-                        Send Message
-                        <span className="ml-1 tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5">-&gt;</span>
-                    </span>
+            <div className="mx-auto">
+                <button type="submit" className="btn group mb-4 w-full bg-gradient-to-t from-forest-600 to-forest-500 text-white rounded-full px-8 py-3 text-lg">
+                <span className="relative inline-flex items-center">
+                    Send Message
+                    <span className="ml-1 tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5">-&gt;</span>
+                </span>
                 </button>
             </div>
         </form>

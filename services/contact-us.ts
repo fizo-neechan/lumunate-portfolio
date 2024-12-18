@@ -38,6 +38,6 @@ async function sendAdminNotificationEmail(data: AdminEmailProps): Promise<string
     if (error instanceof EmailError) {
       throw error;
     }
-    throw new EmailError("Failed to prepare client recieve email", error);
+    throw new EmailError("Failed to prepare client receive email", error);
   }
 }
